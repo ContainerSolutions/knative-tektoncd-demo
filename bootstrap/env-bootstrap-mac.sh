@@ -14,20 +14,20 @@ set -e
 # brew search multipass
 # brew cask install multipass
 
-echo
-echo "=== Creating a microk8s vm with istio enabled ==="
-echo
-multipass launch --name microk8s-knative --mem 8G --disk 40G --cpus 2
-multipass exec microk8s-knative -- sudo snap install microk8s --classic
-multipass exec microk8s-knative -- sudo iptables -P FORWARD ACCEPT
-#Waiting for microk8s to start up all necessary processes. I observed that some times it fails to enable istio if enabled immediately.
-sleep 60
-multipass exec microk8s-knative -- sudo microk8s.enable istio
+# echo
+# echo "=== Creating a microk8s vm with istio enabled ==="
+# echo
+# multipass launch --name microk8s-knative --mem 8G --disk 40G --cpus 2
+# multipass exec microk8s-knative -- sudo snap install microk8s --classic
+# multipass exec microk8s-knative -- sudo iptables -P FORWARD ACCEPT
+# #Waiting for microk8s to start up all necessary processes. I observed that some times it fails to enable istio if enabled immediately.
+# sleep 60
+# multipass exec microk8s-knative -- sudo microk8s.enable istio
 
-echo
-echo "=== Fetching the kubeconfig for remote access ==="
-echo
-multipass exec microk8s-knative -- /snap/bin/microk8s.config > kubeconfig
+# echo
+# echo "=== Fetching the kubeconfig for remote access ==="
+# echo
+# multipass exec microk8s-knative -- /snap/bin/microk8s.config > kubeconfig
 
 
 echo
