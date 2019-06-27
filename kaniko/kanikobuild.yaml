@@ -9,7 +9,7 @@ spec:
       url: https://github.com/cppforlife/simple-app
       revision: master
   template:
-    name: buildpacks-cnb
+    name: buildpacks-kaniko
     arguments:
     - name: IMAGE
       value: index.docker.io/andreas131989/simple-app:buildpack
