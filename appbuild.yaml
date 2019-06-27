@@ -1,0 +1,15 @@
+apiVersion: build.knative.dev/v1alpha1
+kind: Build
+metadata:
+  name: cnb-example-build
+spec:
+  serviceAccountName: serv-acct1
+  source:
+    git:
+      url: https://github.com/buildpack/sample-java-app.git
+      revision: master
+  template:
+    name: buildpacks-cnb
+    arguments:
+    - name: IMAGE
+      value: index.docker.io/andreas131989/simple-app:buildpack
