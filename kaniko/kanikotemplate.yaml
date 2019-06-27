@@ -1,0 +1,22 @@
+---
+apiVersion: build.knative.dev/v1alpha1
+kind: BuildTemplate
+metadata:
+  name: buildpacks-cnb
+spec:
+  parameters:
+  - name: IMAGE
+    description: The image you wish to create. For example, "repo/example", or "example.com/repo/image".
+  - name: BUILDER_IMAGE
+    description: The builder image (must include v3 lifecycle and compatible buildpacks).
+    default: packs/samples:v3alpha2
+  - name: PATH
+    description: The path to the dockerfile 
+    default: Dockerfile
+  steps:
+  - name: build
+    image: ${BUILDER_IMAGE}
+    args:
+    - "--dockerfile=/workspace/${PATH}"
+    - "--destination=${IMAGE}"
+    imagePullPolicy: Always

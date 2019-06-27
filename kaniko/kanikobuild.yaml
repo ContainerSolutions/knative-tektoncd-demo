@@ -6,10 +6,14 @@ spec:
   serviceAccountName: serv-acct1
   source:
     git:
-      url: https://github.com/buildpack/sample-java-app.git
+      url: https://github.com/cppforlife/simple-app
       revision: master
   template:
     name: buildpacks-cnb
     arguments:
     - name: IMAGE
       value: index.docker.io/andreas131989/simple-app:buildpack
+    - name: BUILDER_IMAGE
+      value: gcr.io/kaniko-project/executor:v0.6.0
+    - name: PATH
+      value: Dockerfile

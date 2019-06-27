@@ -3,7 +3,7 @@ kind: Build
 metadata:
   name: cnb-example-build
 spec:
-  serviceAccountName: knative-build
+  serviceAccountName: serv-acct1
   source:
     git:
       url: https://github.com/buildpack/sample-java-app.git
