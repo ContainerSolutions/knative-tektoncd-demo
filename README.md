@@ -10,7 +10,7 @@ So far, the following have been investigated:
 
 Todo
 
-- Solve the access issues while fetching from private github repo and pushing to GCR.
+- Solve the access issues while fetching from private github repo and pushing to GCR. - Done
 - Knative service manifest that builds from a template and deploys to GKE
 - Choose an application to use for the demo (preferably written in Go)
 - See how to incorporate tests in the build pipeline
