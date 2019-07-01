@@ -11,7 +11,7 @@ So far, the following have been investigated:
 Todo
 
 - Solve the access issues while fetching from private github repo and pushing to GCR. - Done
-- Knative service manifest that builds from a template and deploys to GKE
+- Knative service manifest that builds from a template and deploys to GKE - Done
 - Choose an application to use for the demo (preferably written in Go)
 - See how to incorporate tests in the build pipeline
 - See if it is possible to trigger a knative build with a git push
