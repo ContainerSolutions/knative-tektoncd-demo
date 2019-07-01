@@ -36,6 +36,5 @@ steps:
   id: Deploy
   args: ['apply','-f','kaniko/kanikobuild.yaml']
   env:
-  - 'CLOUDSDK_COMPUTE_REGION=europe-west4'
-  - 'CLOUDSDK_COMPUTE_ZONE=a'
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west4-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=knative-demo'
