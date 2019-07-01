@@ -1,9 +1,9 @@
 apiVersion: build.knative.dev/v1alpha1
 kind: Build
 metadata:
-  name: cnb-example-build
+  name: cnb-example
 spec:
-  serviceAccountName: serv-acct1
+  serviceAccountName: builder
   source:
     git:
       url: https://github.com/buildpack/sample-java-app.git
@@ -12,4 +12,4 @@ spec:
     name: buildpacks-cnb
     arguments:
     - name: IMAGE
-      value: gcr.io/knative-test-244411/simple-app:0.1
+      value: gcr.io/knative-test-244411/simple-app

@@ -1,18 +1,18 @@
 apiVersion: build.knative.dev/v1alpha1
 kind: Build
 metadata:
-  name: cnb-example-build
+  name: cnb-example-kaniko
 spec:
-  serviceAccountName: serv-acct1
+  serviceAccountName: builder
   source:
     git:
-      url: https://github.com/cppforlife/simple-app
+      url: https://github.com/datawire/hello-world
       revision: master
   template:
     name: buildpacks-kaniko
     arguments:
     - name: IMAGE
-      value: index.docker.io/andreas131989/simple-app:buildpack
+      value: gcr.io/kubernetes-demo-225509/hello-world
     - name: BUILDER_IMAGE
       value: gcr.io/kaniko-project/executor:v0.6.0
     - name: PATH

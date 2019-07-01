@@ -20,3 +20,6 @@ spec:
     - "--dockerfile=/workspace/${PATH}"
     - "--destination=${IMAGE}"
     imagePullPolicy: Always
+    env:
+    - name: DOCKER_CONFIG
+      value: /builder/home/.docker
