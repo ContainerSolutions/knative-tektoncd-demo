@@ -12,7 +12,7 @@ spec:
     name: buildpacks-kaniko
     arguments:
     - name: IMAGE
-      value: gcr.io/kubernetes-demo-225509/hello-world
+      value: gcr.io/knative-test-244411/hello-world
     - name: BUILDER_IMAGE
       value: gcr.io/kaniko-project/executor:v0.6.0
     - name: PATH
