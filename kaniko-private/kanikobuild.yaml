@@ -3,11 +3,11 @@ kind: Build
 metadata:
   name: cnb-example-kaniko
 spec:
-  serviceAccountName: builder
+  serviceAccountName: builder-ssh
   source:
     git:
-      url: https://github.com/datawire/hello-world
-      revision: master
+      url: git@github.com:ContainerSolutions/event-driven-kubernetes-workload.git
+      revision: prepo_feature
   template:
     name: buildpacks-kaniko
     arguments:

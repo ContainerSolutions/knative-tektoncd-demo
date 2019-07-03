@@ -1,0 +1,9 @@
+steps:
+
+# deploy service to Knative cluster using the above gen'd manifest
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Deploy
+  args: ['apply','-f','kaniko-private/kanikoserve.yaml']
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west4-a'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=knative-demo'
