@@ -7,7 +7,7 @@ spec:
   source:
     git:
       url: git@github.com:ContainerSolutions/event-driven-kubernetes-workload.git
-      revision: prepo_feature
+      revision: master
   template:
     name: buildpacks-kaniko
     arguments:
