@@ -13,12 +13,16 @@ spec:
   - name: PATH
     description: The path to the dockerfile 
     default: Dockerfile
+  - name: CONTEXT
+    description: The path to the build directory
+    default: /workspace
   steps:
   - name: build
     image: ${BUILDER_IMAGE}
     args:
     - "--dockerfile=/workspace/${PATH}"
     - "--destination=${IMAGE}"
+    - "--context=${CONTEXT}"
     imagePullPolicy: Always
     env:
     - name: DOCKER_CONFIG

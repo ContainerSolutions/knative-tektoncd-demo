@@ -16,4 +16,6 @@ spec:
     - name: BUILDER_IMAGE
       value: gcr.io/kaniko-project/executor:v0.6.0
     - name: PATH
-      value: Dockerfile
+      value: kaniko-private/Dockerfile
+    - name: CONTEXT
+      value: dir:///workspace/kaniko-private
