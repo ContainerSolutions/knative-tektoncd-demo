@@ -3,6 +3,7 @@ kind: Task
 metadata:
   name: build
 spec:
+  serviceAccount: builder
   inputs:
     resources:
     - name: workspace
