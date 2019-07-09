@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: sample-app-github
+spec:
+  type: git
+  params:
+    - name: url
+      value: https://github.com/cppforlife/simple-app.git
+    - name: revision
+      value: master

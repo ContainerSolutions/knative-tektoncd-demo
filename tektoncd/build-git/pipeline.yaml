@@ -1,0 +1,32 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: build-pipeline
+spec:
+  resources:
+  - name: source-repo
+    type: git
+  tasks:
+  - name: build-docker-image
+    taskRef:
+      name: build
+    resources:
+      inputs:
+      - name: workspace
+        resource: source-repo
+#      outputs:
+#      - name: workspace
+#        resource: built-image
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineRun
+metadata:
+  name: output-pipeline-run
+spec:
+  pipelineRef:
+    name: build-pipeline
+  serviceAccount: builder
+  resources:
+  - name: source-repo
+    resourceRef:
+      name: sample-app-github

@@ -1,0 +1,30 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: build
+spec:
+  inputs:
+    resources:
+    - name: workspace
+      type: git
+    params:
+    - name: pathToDockerFile
+      description: The path to the dockerfile to build
+      default: /workspace/workspace/Dockerfile
+    - name: pathToContext
+      description: The build context used by Kaniko (https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)
+      default: /workspace/workspace
+#  outputs:
+#    resources:
+#    - name: built-image
+#      type: image
+  steps:
+  - name: build
+    image: gcr.io/kaniko-project/executor:debug
+    #  value: "/builder/home/.docker/"
+    command:
+    - /kaniko/executor
+    args:
+    - --dockerfile=${inputs.params.pathToDockerFile}
+    - --context=${inputs.params.pathToContext}
+    - --destination=gcr.io/knative-test-244411/hello-world
