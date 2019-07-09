@@ -3,17 +3,20 @@ kind: Build
 metadata:
   name: cnb-example-kaniko
 spec:
+  timeout: 1800s
   serviceAccountName: builder
   source:
     git:
-      url: https://github.com/datawire/hello-world
-      revision: master
+      url: https://github.com/knative/docs.git
+      revision: release-0.7
   template:
     name: buildpacks-kaniko
     arguments:
     - name: IMAGE
-      value: gcr.io/knative-test-244411/hello-world
+      value: gcr.io/knative-test-244411/autoscale:0.7
     - name: BUILDER_IMAGE
       value: gcr.io/kaniko-project/executor:v0.6.0
     - name: PATH
-      value: Dockerfile
+      value: docs/serving/samples/autoscale-go/Dockerfile
+    - name: CONTEXT
+      value: dir:///workspace/docs/serving/samples/autoscale-go
