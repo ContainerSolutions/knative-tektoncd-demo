@@ -3,7 +3,7 @@ kind: Task
 metadata:
   name: build
 spec:
-  serviceAccount: builder
+#  serviceAccount: builder
   inputs:
     resources:
     - name: workspace
@@ -21,7 +21,7 @@ spec:
 #      type: image
   steps:
   - name: build
-    image: gcr.io/kaniko-project/executor:debug
+    image: gcr.io/kaniko-project/executor:v0.6.0
     #  value: "/builder/home/.docker/"
     command:
     - /kaniko/executor
@@ -29,3 +29,6 @@ spec:
     - --dockerfile=${inputs.params.pathToDockerFile}
     - --context=${inputs.params.pathToContext}
     - --destination=gcr.io/knative-test-244411/hello-world
+    env:
+    - name: DOCKER_CONFIG
+      value: /builder/home/.docker

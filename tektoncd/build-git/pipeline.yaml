@@ -25,7 +25,7 @@ metadata:
 spec:
   pipelineRef:
     name: build-pipeline
-  serviceAccount: builder
+  serviceAccount: builder-tkn
   resources:
   - name: source-repo
     resourceRef:

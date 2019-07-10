@@ -6,6 +6,6 @@ spec:
   type: git
   params:
     - name: url
-      value: https://github.com/cppforlife/simple-app.git
+      value: https://github.com/datawire/hello-world.git
     - name: revision
       value: master
