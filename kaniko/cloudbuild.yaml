@@ -6,4 +6,4 @@ steps:
   args: ['apply','-f','kaniko/kanikoserve.yaml']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=europe-west4-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=knative-demo'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=knative-enhanced'
