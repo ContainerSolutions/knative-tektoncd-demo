@@ -1,12 +1,11 @@
 # CICD capabilities of Knative Build and TektonCD
 
-This repository contains several demos regarding Knative Build and TektonCD. The goal is to explore the Knative Build capabilities and compare with TektonCD which is currently under evaluation to officially replace the Knative Build component.
+This repository contains two demos regarding Knative Build and TektonCD. The goal is to explore the Knative Build capabilities and compare with TektonCD which is currently under evaluation to officially replace the Knative Build component.
 
 ## Getting Started
 
-There are three demos in this repository.
+There are two demos in this repository.
 - Knative build using Kaniko that pulls the code from a public repository
-- Knative build using Kaniko that pulls the code from a private repository
 - TektonCD pipeline that uses a public repository
 
 ### Prerequisites
