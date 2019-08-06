@@ -1,18 +1,45 @@
-# CICD capabilities of Knative
+# CICD capabilities of Knative Build and TektonCD
 
-So far, the following have been investigated:
+This repository contains several demos regarding Knative Build and TektonCD. The goal is to explore the Knative Build capabilities and compare with TektonCD which is currently under evaluation to officially replace the Knative Build component.
 
-- Knative build that fetches code from a public github repo, builds the container image and pushes it in a docker hub repository.
-- Knative build that fetches code from a private github repo, builds the container image and pushes it to GCR private registry (some access issues here)
-- Knative build template that uses Kaniko - a tool that builds container images in a K8s pod. That way, docker dependence is removed
-- Cloud Native Build (cnb) template that performs a series of tests to build and push image in Docker, GCP, ACR or ECR.
+## Getting Started
+
+There are three demos in this repository.
+- Knative build using Kaniko that pulls the code from a public repository
+- Knative build using Kaniko that pulls the code from a private repository
+- TektonCD pipeline that uses a public repository
+
+### Prerequisites
+
+For all demos, Google Cloud Platform and specifically GKE was used as the underlying Kubernetes cluster. Also, Google Cloud Build was used as the service to trigger a deployment after a certain tag is pushed. 
+
+Also, appropriate service accounts need to be created on GKE and on GCP to allow Knative to push/pull images in GCR. Finally, two triggers on Google Cloud Build need to be setup after GCP is authenticated in Github and allowed to pull code from the chosen repository.
 
 
-Todo
+## Running the demos
 
-- Solve the access issues while fetching from private github repo and pushing to GCR. - Done for GCR
-- Knative service manifest that builds from a template and deploys to GKE - Done
-- Choose an application to use for the demo (preferably written in Go)
-- See how to incorporate tests in the build pipeline
-- See if it is possible to trigger a knative build with a git push - Done with the help of Cloud Build in GCP
-- Create e2e demo with automated build and deployment
+Every demo can be trigger by pushing a certain git tag that can be defined during the Google Cloud Build trigger creation. For example, assuming the trigger expects the tag knative, the following commands should be executed:
+```
+git tag knative
+git push origin knative
+```
+
+That will trigger a build which will eventually apply the respective Knative or TektonCD pipelineRun manifest.
+
+### Deleting the resources
+
+The resources are not automatically cleaned up therefore they must be manually deleted. This is key as a consecutive cloud build on the same running resource will fail.
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Authors
+
+* **Andreas Krivas** - *Initial work* - [GitHub](https://github.com/andreas131989)
+
+* **Aleksandr Guljajev** - *Initial work* - [GitHub](https://github.com/alex-glv)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
