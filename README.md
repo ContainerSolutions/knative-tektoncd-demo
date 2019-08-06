@@ -30,10 +30,6 @@ That will trigger a build which will eventually apply the respective Knative or 
 
 The resources are not automatically cleaned up therefore they must be manually deleted. This is key as a consecutive cloud build on the same running resource will fail.
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
 ## Authors
 
 * **Andreas Krivas** - *Initial work* - [GitHub](https://github.com/andreas131989)
