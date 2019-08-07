@@ -1,0 +1,37 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: simple-app-service
+  namespace: default
+spec:
+  runLatest:
+    configuration:
+      build:
+        apiVersion: build.knative.dev/v1alpha1
+        kind: Build
+        spec:
+          timeout: 1800s
+          serviceAccountName: builder
+          source:
+            git:
+              url: https://github.com/knative/docs.git
+              revision: release-0.7
+          template:
+            name: buildpacks-kaniko
+            arguments:
+              - name: IMAGE
+                value: gcr.io/knative-test-244411/autoscale-go:0.7
+              - name: BUILDER_IMAGE
+                value: gcr.io/kaniko-project/executor:v0.6.0
+              - name: PATH
+                value: docs/serving/samples/autoscale-go/Dockerfile
+              - name: CONTEXT
+                value: dir:///workspace/docs/serving/samples/autoscale-go
+      revisionTemplate:
+        spec:
+          container:
+            image: gcr.io/knative-test-244411/autoscale-go:0.7
+            imagePullPolicy: Always
+            env:
+              - name: TARGET
+                value: "Hello from the other side"

@@ -1,0 +1,29 @@
+---
+apiVersion: build.knative.dev/v1alpha1
+kind: BuildTemplate
+metadata:
+  name: buildpacks-kaniko
+spec:
+  parameters:
+  - name: IMAGE
+    description: The image you wish to create. For example, "repo/example", or "example.com/repo/image".
+  - name: BUILDER_IMAGE
+    description: The builder image (must include v3 lifecycle and compatible buildpacks).
+    default: packs/samples:v3alpha2
+  - name: PATH
+    description: The path to the dockerfile 
+    default: Dockerfile
+  - name: CONTEXT
+    description: The path to the build directory
+    default: /workspace
+  steps:
+  - name: build
+    image: ${BUILDER_IMAGE}
+    args:
+    - "--dockerfile=/workspace/${PATH}"
+    - "--destination=${IMAGE}"
+    - "--context=${CONTEXT}"
+    imagePullPolicy: Always
+    env:
+    - name: DOCKER_CONFIG
+      value: /builder/home/.docker
